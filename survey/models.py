@@ -1,16 +1,23 @@
 from django.db import models
 from django import forms
 
-class Section(models.Model):
+class Survey(models.Model):
     title = models.CharField(max_length=200)
     def __unicode__(self):
         return self.title
 
-class Choice(models.Model):
+class Section(models.Model):
+    survey = models.ForeignKey(Survey)
+    title = models.CharField(max_length=200)
+    def __unicode__(self):
+        return self.title
+
+class Question(models.Model):
     section = models.ForeignKey(Section)
+    survey = models.ForeignKey(Survey)
     choice = models.CharField(max_length=200)
     def __unicode__(self):
-        return self.choice
+        return self.choice    
 
 class Age(forms.Form):
     AGE_CHOICE = (

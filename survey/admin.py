@@ -1,12 +1,15 @@
-from survey.models import Section, Choice
+from survey.models import Survey, Section, Question
 from django.contrib import admin
 
-class ChoiceInline(admin.TabularInline):
-    model = Choice
-    extra = 5
+class QuestionInline(admin.TabularInline):
+    model = Question
+    extra = 1
 
-class SectionAdmin(admin.ModelAdmin):
-    inlines = [ChoiceInline]
-    
-admin.site.register(Section, SectionAdmin)
-                                        
+class SectionInline(admin.TabularInline):
+    model = Section
+    extra = 1
+
+class SurveyAdmin(admin.ModelAdmin):
+    inlines = [SectionInline, QuestionInline]
+
+admin.site.register(Survey, SurveyAdmin)                                        
