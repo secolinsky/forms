@@ -5,7 +5,6 @@ class ChoiceInline(admin.TabularInline):
     model = Choice
     extra = 5
 
-
 class SectionAdmin(admin.ModelAdmin):
     inlines = [ChoiceInline]
     

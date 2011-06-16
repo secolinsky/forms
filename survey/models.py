@@ -9,11 +9,5 @@ class Section(models.Model):
 class Choice(models.Model):
     section = models.ForeignKey(Section)
     choice = models.CharField(max_length=200)
-
     def __unicode__(self):
         return self.choice
-
-class ChoiceForm(ModelForm):
-    class Meta:
-        model = Choice
-        exclude = ('section')

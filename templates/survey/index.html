@@ -1,10 +1,8 @@
-<form action="/survey/" method="post">
-{% csrf_token %}
+<form action="/survey/thank_you/" method="post">{% csrf_token %}
 {% for s in sections %}
 <h1>{{ s.title }}</h1>
-
 {% for choice in s.choice_set.all %}
-    <input type="radio" name="section{{ s.id  }}" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <input type="radio" name="section{{ s.id  }}" id="choice{{ forloop.counter }}" value="{{ choice }}" />
     <label for="choice{{ forloop.counter }}">{{ choice }}</label><br />
 {% endfor %}
 {% endfor %}
