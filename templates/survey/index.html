@@ -1,4 +1,12 @@
 <form action="/survey/thank_you/" method="post">{% csrf_token %}
+<table>
+{{ age }}
+
+{{ procedure }}
+
+{{ status }}
+</table>
+
 {% for s in sections %}
 <h1>{{ s.title }}</h1>
 {% for choice in s.choice_set.all %}
